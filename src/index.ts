@@ -10,6 +10,7 @@ export { RequireRoles } from './nest/decorators/require-roles.decorator.js';
 
 // Config types
 export type {
+  AuthConfig,
   AuthModuleOptions,
   AuthModuleAsyncOptions,
 } from './nest/auth.config.js';

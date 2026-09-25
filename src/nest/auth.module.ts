@@ -65,30 +65,25 @@ export class AuthModule {
     };
   }
 
-  static forRootAsync(asyncOptions: AuthModuleAsyncOptions): DynamicModule {
-    const asyncConfigProvider: Provider = {
+  static forRootAsync<TArgs extends unknown[]>(
+    asyncOptions: AuthModuleAsyncOptions<TArgs>,
+  ): DynamicModule {
+    const configProvider: Provider = {
       provide: AUTH_CONFIG,
-
-      useFactory: asyncOptions.useFactory,
-
-      inject: asyncOptions.inject ?? [],
+      useFactory: asyncOptions.useFactory as (...args: unknown[]) => unknown,
+      inject: (asyncOptions.inject ?? []) as never[],
     };
 
     return {
       module: AuthModule,
-
-      imports: asyncOptions.imports ?? [],
-
+      imports: (asyncOptions.imports ?? []) as never[],
       providers: [
-        asyncConfigProvider,
-
+        configProvider,
         ...buildProvidersFromConfig(),
-
         AuthService,
         AuthenticationGuard,
         AuthorizationGuard,
       ],
-
       exports: [
         AUTH_CONFIG,
         AUTHENTICATION_SERVICE,
@@ -99,7 +94,6 @@ export class AuthModule {
         IDENTITY_REPOSITORY,
         SESSION_MANAGER,
       ],
-
       global: false,
     };
   }
