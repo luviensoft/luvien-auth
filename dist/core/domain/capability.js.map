@@ -1,0 +1,1 @@
+{"version":3,"file":"capability.js","sourceRoot":"","sources":["../../../src/core/domain/capability.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,UAAU,GAAG;IACxB,IAAI,EAAE,MAAM;IACZ,GAAG,EAAE,KAAK;IACV,gBAAgB,EAAE,mBAAmB;IACrC,iBAAiB,EAAE,qBAAqB;IACxC,YAAY,EAAE,eAAe;CACrB,CAAC"}
